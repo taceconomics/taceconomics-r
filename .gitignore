@@ -11,7 +11,7 @@ tests/testthat/testthat-problems.rds
 *-Internal.R
 
 # RStudio files
-*.Rproj
+.Rproj
 .Rproj.user/
 .Rproj.user
 
