@@ -1,0 +1,26 @@
+Package: taceconomics
+Type: Package
+Title: API Wrapper for TAC ECONOMICS
+Version: 0.1.0
+Authors@R: c(
+    person("Sylvain BARTHELEMY", role="cre", email="sylvain.barthelemy@taceconomics.com"),
+    person("TAC ECONOMICS", role="cph"))
+Maintainer: Sylvain BARTHELEMY <sylvain.barthelemy@taceconomics.com>
+Description: Functions for interacting with the TAC ECONOMICS API.
+Imports:
+    httr (>= 0.6.1),
+    jsonlite (>= 0.9.14),
+    xts
+Suggests:
+    testthat (>= 0.10.0),
+    roxygen2,
+    timeSeries
+Depends:
+    R (>= 2.15.0),
+    xts
+License: MIT + file LICENSE
+URL: https://github.com/taceconomics/taceconomics-r
+BugReports: https://github.com/taceconomics/taceconomics-r/issues
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1

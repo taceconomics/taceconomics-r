@@ -1,0 +1,19 @@
+# History files
+.Rhistory
+.Rapp.history
+
+# Test files
+tests/testthat/testthat-problems.rds
+
+
+# Example code in package build process
+*-Ex.R
+*-Internal.R
+
+# RStudio files
+.Rproj.user/
+.Rproj.user
+
+# produced vignettes
+vignettes/*.html
+vignettes/*.pdf
