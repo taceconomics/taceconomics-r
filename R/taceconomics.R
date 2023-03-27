@@ -2,6 +2,7 @@ library(httr)
 library(jsonlite)
 library(xts)
 
+
 taceconomics.base_url <- function(base_url) {
   if (!missing(base_url)) {
     options(taceconomics.base_url = base_url)
