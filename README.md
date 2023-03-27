@@ -58,6 +58,8 @@ OPTION | Description | value |
 | frequency | returned frequency of the query | one of 'A','Q','M','D'. Default base frequency of the indicator |
 | agg_mode | aggregation mode if needed | one of 'mean','start_of_period','end_of_period','median'. Default 'mean' |
 
+	taceconomics.api('data/eia/BREPUUS/wld?start_date=2020&agg_mode=Q')$data
+
 
 
 
