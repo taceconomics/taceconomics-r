@@ -32,7 +32,7 @@ taceconomics.api <- function(path, method="GET", data=NULL) {
   url = paste(taceconomics.base_url(), path, sep="/")
   req = httr::VERB(method, url, config=do.call(httr::add_headers, headers), body=data)
   if( httr::status_code(req) == 200 ) {
-    data = content(req, "text", encoding="UTF-8")
+    data = httr::content(req, "text", encoding="UTF-8")
     data = jsonlite::fromJSON(data)
     return(data)
   }

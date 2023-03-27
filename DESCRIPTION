@@ -16,7 +16,7 @@ Suggests:
     roxygen2,
     timeSeries
 Depends:
-    R (>= 2.15.0),
+    R (>= 3.8.0),
     xts
 License: MIT + file LICENSE
 URL: https://github.com/taceconomics/taceconomics-r

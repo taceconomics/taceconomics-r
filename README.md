@@ -19,8 +19,8 @@ To install the [devtools](https://cran.r-project.org/package=devtools) package:
 
 Import the TAC ECONOMICS package and set your apikey to be able to query datas :
 
-	import(taceconomics)
-	taceconomics.apikey(TACECONOMICS_APIKEY)
+	library(taceconomics)
+	taceconomics.apikey(YOUR_APIKEY)
 	
 You can now query a data using the function getdata() or by using the Path as defined in the next chapter :
 	getdata("weo/NGDP_RPCH","EGY")
@@ -36,17 +36,24 @@ PATH | Description |
 | data/datasets | List all available datasets |
 | data/countries | List all countries |
 | data/regions | List all regions defined |
-| data/regions | List all regions defined |
 | data/dataset_id | List all symbols for the dataset_id |
 | data/dataset_id/symbol/country_id | Get data for the specified symbol and country |
+
+taceconomics.api('data/datasets')$data
+taceconomics.api('data/countries')$data
+taceconomics.api('data/regions')$data
+taceconomics.api('data/weo')$data
+taceconomics.api('data/weo/NGDP_RPCH/EGY')$data
 
 There is also a list of associated options :
 
 OPTION | Description | value | 
-|---|---|
-| api_key | Set your apikey | Your TACECONOMICS_APIKEY
-| start_date | Set the starting date of the queried datas | date on format '%YYYY-%MM-%d'
-| end_date | Set the ending date of the queried datas | date on format '%YYYY-%MM-%d'
+|---|---|---|
+| api_key | Set your apikey | Your TACECONOMICS_APIKEY |
+| start_date | Set the starting date of the queried datas | date on format '%YYYY-%MM-%d' |
+| end_date | Set the ending date of the queried datas | date on format '%YYYY-%MM-%d' |
+| frequency | returned frequency of the query | one of 'A','Q','M','D'. Default base frequency of the indicator |
+| agg_mode | aggregation mode if needed | one of 'mean','start_of_periode','end_of_periode','median'. Default 'mean' |
 
 
 # Exemple of query
