@@ -23,6 +23,7 @@ Import the TAC ECONOMICS package and set your apikey to be able to query datas :
 	taceconomics.apikey(YOUR_APIKEY)
 	
 You can now query a data using the function getdata() or by using the Path as defined in the next chapter :
+
 	getdata("weo/NGDP_RPCH","EGY")
 	taceconomics.api('data/weo/NGDP_RPCH/EGY')
 
@@ -39,11 +40,11 @@ PATH | Description |
 | data/dataset_id | List all symbols for the dataset_id |
 | data/dataset_id/symbol/country_id | Get data for the specified symbol and country |
 
-taceconomics.api('data/datasets')$data
-taceconomics.api('data/countries')$data
-taceconomics.api('data/regions')$data
-taceconomics.api('data/weo')$data
-taceconomics.api('data/weo/NGDP_RPCH/EGY')$data
+	taceconomics.api('data/datasets')$data
+	taceconomics.api('data/countries')$data
+	taceconomics.api('data/regions')$data
+	taceconomics.api('data/weo')$data
+	taceconomics.api('data/weo/NGDP_RPCH/EGY')$data
 
 There is also a list of associated options :
 
