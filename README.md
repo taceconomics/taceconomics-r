@@ -48,7 +48,7 @@ With our taceconomics package, you can query those paths using :
 	taceconomics.api('data/weo')$data
 	taceconomics.api('data/weo/NGDP_RPCH/EGY')$data
 
-There is also a list of associated options :
+When querying datas, you have a list of defined options :
 
 OPTION | Description | value | 
 |---|---|---|
@@ -58,7 +58,7 @@ OPTION | Description | value |
 | frequency | returned frequency of the query | one of 'A','Q','M','D'. Default base frequency of the indicator |
 | agg_mode | aggregation mode if needed | one of 'mean','start_of_period','end_of_period','median'. Default 'mean' |
 
-	taceconomics.api('data/eia/BREPUUS/wld?start_date=2020&agg_mode=Q')$data
+	taceconomics.api('data/eia/BREPUUS/wld?start_date=2020&frequency=Q')$data
 
 
 
