@@ -56,7 +56,7 @@ OPTION | Description | value |
 | start_date | Set the starting date of the queried datas | date on format '%YYYY-%MM-%d' |
 | end_date | Set the ending date of the queried datas | date on format '%YYYY-%MM-%d' |
 | frequency | returned frequency of the query | one of 'A','Q','M','D'. Default base frequency of the indicator |
-| agg_mode | aggregation mode if needed | one of 'mean','start_of_periode','end_of_periode','median'. Default 'mean' |
+| agg_mode | aggregation mode if needed | one of 'mean','start_of_period','end_of_period','median'. Default 'mean' |
 
 
 
