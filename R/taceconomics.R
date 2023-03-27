@@ -1,3 +1,6 @@
+library(httr)
+library(jsonlite)
+library(xts)
 
 taceconomics.base_url <- function(base_url) {
   if (!missing(base_url)) {
@@ -14,7 +17,6 @@ taceconomics.apikey <- function(apikey) {
   invisible(getOption("taceconomics.apikey"))
 }
 
-
 taceconomics.api <- function(path, method="GET", data=NULL) {
 
   if(!is.element(method, c("GET", "POST"))) {
@@ -23,12 +25,11 @@ taceconomics.api <- function(path, method="GET", data=NULL) {
 
   headers = NULL
   if (!is.null(taceconomics.apikey())) {
-    headers <- c(headers, list("x-api-key" = taceconomics.apikey()))
+    headers <- c(headers, list("Authorization"=paste("Bearer", taceconomics.apikey())))
   }
 
   url = paste(taceconomics.base_url(), path, sep="/")
   req = httr::VERB(method, url, config=do.call(httr::add_headers, headers), body=data)
-
   if( httr::status_code(req) == 200 ) {
     data = content(req, "text", encoding="UTF-8")
     data = jsonlite::fromJSON(data)
@@ -61,40 +62,6 @@ taceconomics.format_code <- function(code) {
   list(dataset=dataset, symbol=symbol, key=key)
 }
 
-
-
-getcountries <- function() {
-  r = taceconomics.api("data/countries")
-  if("errors" %in% names(r)) return(r)
-  return(r$data)
-}
-
-
-getregions <- function(region=NULL) {
-  if(is.null(region)) {
-    r = taceconomics.api("data/regions")
-  } else {
-    r = taceconomics.api(paste("data/regions", region, sep="/"))
-  }
-  if("errors" %in% names(r)) return(r)
-  return(r$data)
-}
-
-getsymbols <- function(dataset) {
-  path = paste("data", dataset, "symbols", sep="/")
-  r = taceconomics.api(path)
-  if("errors" %in% names(r)) return(r)
-  return(r$data)
-}
-
-
-searchsymbols <- function(terms) {
-  path = paste("data/search", terms, sep="/")
-  r = taceconomics.api(path)
-  if("errors" %in% names(r)) return(r)
-  return(r$data)
-}
-
 getdata <- function(code, countries=NULL) {
 
   if(length(countries)==1) {
@@ -108,9 +75,11 @@ getdata <- function(code, countries=NULL) {
     for(country in countries) {
       full_code = paste(code, country, sep="/")
       x = getdata(full_code)
-      dat = cbind(dat,x)
+      if(length(x)>0){
+        colnames(x) = country
+        dat = cbind(dat,x)
+      }
     }
-    if(!is.null(ncol(dat))) colnames(dat) = countries
     return(dat)
   }
 
@@ -139,36 +108,21 @@ getdata <- function(code, countries=NULL) {
     seqdate = seq(start(dat), end(dat), by = freq)
     seqdate = xts(data.frame(seqdate=rep(NA,length(seqdate))),order.by = seqdate)
     dat = cbind(seqdate,dat)[,-1]
-  }
 
-  if(is.null(codes$key)) {
-    colnames(dat) = paste(toupper(codes$dataset), toupper(codes$symbol), sep="/")
-  } else {
-    colnames(dat) = paste(toupper(codes$dataset), toupper(codes$symbol), toupper(codes$key), sep="/")
+
+    if(is.null(codes$key)) {
+      colnames(dat) = paste(toupper(codes$dataset), toupper(codes$symbol), sep="/")
+    } else {
+      colnames(dat) = paste(toupper(codes$dataset), toupper(codes$symbol), toupper(codes$key), sep="/")
+    }
   }
 
   return(dat)
 }
 
 
-putdata <- function(code, data) {
 
-  codes = taceconomics.format_code(code)
-  if(is.null(codes)) return(NULL)
 
-  symbol = paste(toupper(codes$symbol), sep="/")
-  if(!is.null(codes$key)) {
-    symbol = paste(toupper(codes$symbol), toupper(codes$key), sep="/")
-  }
 
-  d = data
-  dates = time(d)
-  d = data.frame(row.names=NULL, symbol=symbol, timestamp=dates, d)
-  if(ncol(d)==3) colnames(d) = c("symbol", "timestamp", "value")
-  data_json = jsonlite::toJSON(list(data=d), digits=NA)
 
-  p = paste("data", codes$dataset, symbol, sep="/")
-  r = taceconomics.api(p, method="POST", data=data_json)
 
-  r
-}
