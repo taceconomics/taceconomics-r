@@ -53,10 +53,11 @@ When querying datas, you have a list of defined options :
 OPTION | Description | value | 
 |---|---|---|
 | api_key | Set your apikey | Your TACECONOMICS_APIKEY |
-| start_date | Set the starting date of the queried datas | date on format '%YYYY-%MM-%d' |
-| end_date | Set the ending date of the queried datas | date on format '%YYYY-%MM-%d' |
+| start_date | Set the starting date of the queried datas | date on format '%yyyy-%MM-%dd' |
+| end_date | Set the ending date of the queried datas | date on format '%yyyy-%MM-%dd' |
 | frequency | returned frequency of the query | one of 'A','Q','M','D'. Default base frequency of the indicator |
 | agg_mode | aggregation mode if needed | one of 'mean','start_of_period','end_of_period','median'. Default 'mean' |
+
 
 	taceconomics.api('data/eia/BREPUUS/wld?start_date=2020&frequency=Q')$data
 
