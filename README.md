@@ -22,7 +22,7 @@ Import the TAC ECONOMICS package and set your apikey to be able to query datas :
 	library(taceconomics)
 	taceconomics.apikey(YOUR_APIKEY)
 	
-You can now query a data using the function getdata() or by using the Path as defined in the next chapter :
+You can now query a data using the function getdata() which return the query with xts format, or by using the taceconomics.api call to get raw data :
 
 	getdata("weo/NGDP_RPCH","EGY")
 	taceconomics.api('data/weo/NGDP_RPCH/EGY')
@@ -39,6 +39,8 @@ PATH | Description |
 | data/regions | List all regions defined |
 | data/dataset_id | List all symbols for the dataset_id |
 | data/dataset_id/symbol/country_id | Get data for the specified symbol and country |
+
+With our taceconomics package, you can query those paths using :
 
 	taceconomics.api('data/datasets')$data
 	taceconomics.api('data/countries')$data
@@ -57,10 +59,6 @@ OPTION | Description | value |
 | agg_mode | aggregation mode if needed | one of 'mean','start_of_periode','end_of_periode','median'. Default 'mean' |
 
 
-# Exemple of query
-
-Get from World Economic Outlook (WEO) the gdp growth for Egypt until 2022:
-	https://api.taceconomics.io/data/weo/NGDP_RPCH/EGY?api_key=TACECONOMICS_APIKEY&end_date='2022-01-01'
 
 
 
