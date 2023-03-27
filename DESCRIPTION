@@ -8,7 +8,7 @@ Authors@R: c(
 Maintainer: Sylvain BARTHELEMY <sylvain.barthelemy@taceconomics.com>
 Description: Functions for interacting with the TAC ECONOMICS API.
 Imports:
-    httr (>= 0.6.1),
+    httr (>= 1.4.0),
     jsonlite (>= 0.9.14),
     xts
 Suggests:
