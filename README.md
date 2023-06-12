@@ -62,7 +62,21 @@ OPTION | Description | value |
 
 	taceconomics.api('data/eia/BREPUUS/wld?start_date=2020&frequency=Q')$data
 
+You can also search for a specific symbol, dataset, country or list all results for a keywords.
 
+PATH | Description |
+|---|---|
+| data/search | starting path to look for a specific search |
+
+OPTION | Description | value | 
+|---|---|---|
+| q | look for all results containing the specified keyword(s) | a (list of) keyword(s) (ex : brent) |
+| symbol | list of all symbols containing the specified string | a string ( ex : brent) |
+| dataset | list of all symbols in the specified dataset | a string (ex : weo) |
+| country | list of all symbols available for the specified country | a country ISO 3 code (ex : FRA) |
+
+	taceconomics.api("data/search?q=brent")$data
+	taceconomics.api("data/search?dataset=eia")$data
 
 
 
