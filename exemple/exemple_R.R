@@ -5,7 +5,7 @@ library(reshape2)
 # https://github.com/taceconomics/taceconomics-r
 
 # you api_key
-taceconomics.apikey("YOUR_APIKEY")
+taceconomics.apikey("apikey_datalab")
 
 ######################################################################
 #                             Basic Usage
