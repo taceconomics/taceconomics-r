@@ -63,7 +63,7 @@ taceconomics.format_code <- function(code) {
   list(dataset=dataset, symbol=symbol, key=key)
 }
 
-getdata <- function(code, countries=NULL) {
+getdata <- function(code, countries=NULL, options=NULL) {
 
   if(length(countries)==1) {
     full_code = paste(code, countries, sep="/")
@@ -92,6 +92,10 @@ getdata <- function(code, countries=NULL) {
     path = paste(path, codes$key, sep="/")
   }
 
+  if (!is.null(options)){
+    path = paste(path,options,sep="?")
+  }
+  
   r = taceconomics.api(path)
   if(is.null(r)) {
     dat = xts(NA, as.Date("2000-01-01", format="%Y-%m-%d"))

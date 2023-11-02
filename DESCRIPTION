@@ -1,7 +1,7 @@
 Package: taceconomics
 Type: Package
 Title: API Wrapper for TAC ECONOMICS
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: c(
     person("Sylvain BARTHELEMY", role="cre", email="sylvain.barthelemy@taceconomics.com"),
     person("TAC ECONOMICS", role="cph"))
