@@ -120,6 +120,8 @@ getdata <- function(code, countries=NULL, options=NULL) {
     } else {
       colnames(dat) = paste(toupper(codes$dataset), toupper(codes$symbol), toupper(codes$key), sep="/")
     }
+  } else {
+	dat = xts(NA, as.Date("2000-01-01", format="%Y-%m-%d"))
   }
 
   return(dat)

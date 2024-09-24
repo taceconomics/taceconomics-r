@@ -30,7 +30,7 @@ You can now query a data using the function getdata() which return the query wit
 	
 # List of all Available path 
 
-you can make a query by using the basic url path(https://api.taceconomics.io/) whith :
+you can make a query by using the basic url path(https://api.taceconomics.com/) whith :
 
 PATH | Description |
 |---|---|
@@ -62,7 +62,7 @@ OPTION | Description | value |
 | transform | transformation to apply to the query | one of 'diff','diff_yoy','growth','growth_yoy'|
 
 
-	taceconomics.api('data/eia/BREPUUS/wld?start_date=2020&frequency=Q')$data
+	taceconomics.api('data/eia/BREPUUS/wld?start_date=2020&collapse=Q')$data
 
 You can also search for a specific symbol, dataset, country or list all results for a keywords.
 
